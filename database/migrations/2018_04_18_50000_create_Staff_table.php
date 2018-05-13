@@ -22,7 +22,7 @@ class CreateStaffTable extends Migration
             $table->date('databirth')->nullable();
             $table->unique(['id', 'fullname', 'passport']); //составной ключ
         });
-        Schema::create('staffYachts',function (Blueprint $table)
+        Schema::create('staff_Yachts',function (Blueprint $table)
         {
             //внешний ключ к экипажу
             $table->integer('staff_id')->unsigned();

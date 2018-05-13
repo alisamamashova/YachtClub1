@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
 
-    return view('welcome');
+    return view('yacht');
+});
+Route::get('/views/home', function () {
+
+    return view('home');
+});
+Route::get('/views/account', function () {
+
+    return view('account');
 });
