@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Owner;
+use App\Staff_Yacht;
 use Illuminate\Http\Request;
 
-class OwnersController extends Controller
+class Staff_YachtsController extends Controller
 {
     //
 }

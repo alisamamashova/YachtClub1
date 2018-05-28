@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
 
-    return view('yacht');
+   return view('yacht');
 });
 Route::get('/views/home', function () {
 
@@ -24,3 +24,5 @@ Route::get('/views/account', function () {
 
     return view('account');
 });
+Route::get('/', 'YachtsController@index');
+Route::get('/yachts/{yacht}', 'YachtsController@show');

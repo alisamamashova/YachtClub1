@@ -29,5 +29,6 @@ class CreateOwnersTable extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('owners');
     }
 }

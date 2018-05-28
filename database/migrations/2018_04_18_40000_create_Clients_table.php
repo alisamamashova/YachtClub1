@@ -19,23 +19,8 @@ class CreateClientsTable extends Migration
             $table->string('fullname')->nullable();
             $table->string('passport')->nullable();
             $table->string('phone_number')->nullable();
-            $table->rememberToken();
             $table->unique(['id', 'fullname','passport']); //составной первичный ключ
 
-        });
-        Schema::create('rents', function (Blueprint $table)
-        {
-            $table->increments('rent_id'); //первычный ключ
-            //внешний ключ к таблице Клиентов
-            $table->integer('client_id')->unsigned();
-            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
-            //внешний ключ к таблице яхт
-            $table->integer('yacht_id')->unsigned();
-            $table->foreign('yacht_id')->references('id')->on('yachts')->onDelete('cascade');
-            $table->string('paymentmethod')->nullable();
-            $table->date('rent_start')->nullable();
-            $table->date('rent_finish')->nullable();
-            $table->unique(['yacht_id','client_id','rent_start','rent_finish']);//составной ключ
         });
     }
 
@@ -47,5 +32,6 @@ class CreateClientsTable extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('clients');
     }
 }

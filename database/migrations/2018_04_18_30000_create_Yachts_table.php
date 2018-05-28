@@ -23,7 +23,7 @@ class CreateYachtsTable extends Migration
             $table->string('type')->nullable();
             $table->string('displacement')->nullable();
             $table->decimal('price')->nullable();
-            $table->string('status')->nullable();
+            $table->boolean('status')->default('true');
             //внешний ключ к владельцам
             $table->integer('owner_id')->unsigned();
             $table->foreign('owner_id')->references('id')->on('owners');
@@ -39,5 +39,6 @@ class CreateYachtsTable extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('yachts');
     }
 }
