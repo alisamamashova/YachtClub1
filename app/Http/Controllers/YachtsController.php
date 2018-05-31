@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Yacht;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class YachtsController extends Controller
@@ -9,12 +10,20 @@ class YachtsController extends Controller
     public function index()
     {
         $yachts = Yacht::all();
-        return view('yachts.index', compact('yachts'));
+        //фильтр типа яхт
+        if($type = request('type'))
+        {
+            $yachts = $yachts->where('type', '=', $type);
+        }
+
+        $types = DB::select('select distinct type from yachts');
+        return view('yacht', compact('yachts','types'));
     }
+
     public function show($id)
     {
-        $yachts = Yacht::find($id);
-        return $yachts;
-        return view('yachts.show', compact($yachts));
+        $yacht = Yacht::find($id);
+       // return $yachts;
+        return view('show', compact('yacht'));
     }
 }

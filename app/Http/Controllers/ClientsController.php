@@ -12,7 +12,7 @@ class ClientsController extends Controller
     }
     public function store()
     {
-        //функционал
+
     }
     public function show()
     {

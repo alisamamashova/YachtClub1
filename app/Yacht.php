@@ -10,6 +10,14 @@ class Yacht extends Model
     public $timestamps = 'false';
     public $fillable = ['model', 'mark', 'flag', 'portofregistry',
                         'type', 'displacement', 'price', 'status', ];
+
+//    public function scopeFilter($query, $filters)
+//    {
+//        if ($type = $filters['type'])
+//        {
+//            $query->where('type', '=', $type);
+//        }
+//    }
     public function staff_yachts()
     {
         //связь с экипажем через таблицу staff_yachts

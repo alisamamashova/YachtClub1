@@ -10,71 +10,37 @@
                <ul>
                    <li>a</li>
                    <li>b</li>
-                   <li>c</li>
+                   <li>
+                       @foreach($types as $type)
+                   <div class="types"></div>
+                           <a href="/?type={{ $type->type}}">{{ $type->type}}</a>
+                       @endforeach
+                   </li>
                    <li>d</li>
                </ul>
            </div>
            <div class="yachts">
+
+               @foreach($yachts as $yacht)
                    <div class="yacht">
                        <img src="/images/logo.png" alt="">
-                       <p>Яхта 1</p>
-                       <p>500$</p>
-                       <a href="#"></a>
+                       <p>{{ $yacht->id }}</p>
+                       <a href="/yachts/{{ $yacht->id }}">
+                           {{ $yacht->model }}
+                           {{ $yacht->mark }}
+                       </a>
+                       <p>{{ $yacht->type }}</p>
+                       <p>{{ $yacht->price }}</p>
+                       <p>
+                           @if ($yacht->status == 1)
+                           <span>Доступно</span>
+                               @else
+                               <span>Недоступно</span>
+                               @endif
+                       </p>
                    </div>
-               <div class="yacht">
-                   <img src="/images/logo.png" alt="">
-                   <p>Яхта 2</p>
-                   <p>500$</p>
-                   <a href="#"></a>
-               </div>
-               <div class="yacht">
-                   <img src="/images/logo.png" alt="">
-                   <p>Яхта 3</p>
-                   <p>500$</p>
-                   <a href="#"></a>
-               </div>
-               <div class="yacht">
-                   <img src="/images/logo.png" alt="">
-                   <p>Яхта 4</p>
-                   <p>500$</p>
-                   <a href="#"></a>
-               </div>
-               <div class="yacht">
-                   <img src="/images/logo.png" alt="">
-                   <p>Яхта 5</p>
-                   <p>500$</p>
-                   <a href="#"></a>
-               </div>
-               <div class="yacht">
-                   <img src="/images/logo.png" alt="">
-                   <p>Яхта 6</p>
-                   <p>500$</p>
-                   <a href="#"></a>
-               </div>
-               <div class="yacht">
-                   <img src="/images/logo.png" alt="">
-                   <p>Яхта 7</p>
-                   <p>500$</p>
-                   <a href="#"></a>
-               </div>
-               <div class="yacht">
-                   <img src="/images/logo.png" alt="">
-                   <p>Яхта 8</p>
-                   <p>500$</p>
-                   <a href="#"></a>
-               </div>
-               <div class="yacht">
-                   <img src="/images/logo.png" alt="">
-                   <p>Яхта 9</p>
-                   <p>500$</p>
-                   <a href="#"></a>
-               </div>
-               <div class="yacht">
-                   <img src="/images/logo.png" alt="">
-                   <p>Яхта 10</p>
-                   <p>500$</p>
-                   <a href="#"></a>
-               </div>
+
+               @endforeach
            </div>
        </div>
     </div>

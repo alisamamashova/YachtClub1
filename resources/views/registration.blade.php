@@ -50,19 +50,6 @@
                             <input type="password" class="form-control" id="confirmPassword" placeholder="Введите пароль ещё раз">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-xs-3">Пол:</label>
-                        <div class="col-xs-2">
-                            <label class="radio-inline">
-                                <input type="radio" name="genderRadios" value="male"> Мужской
-                            </label>
-                        </div>
-                        <div class="col-xs-2">
-                            <label class="radio-inline">
-                                <input type="radio" name="genderRadios" value="female"> Женский
-                            </label>
-                        </div>
-                    </div>
                     <br />
                 </div>
                 <div class="modal-footer">
