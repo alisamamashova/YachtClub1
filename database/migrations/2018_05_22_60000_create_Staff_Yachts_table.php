@@ -23,10 +23,10 @@ class CreateStaffYachtsTable extends Migration
             $table->foreign('yacht_id')->references('id')->on('yachts')->onDelete('cascade');
             $table->date('finish_work')->nullable();
             $table->date('start_work')->nullable();
-            $table->string('position')->nullable();
+            $table->string('position1')->nullable();
             $table->integer('salary');
             //составной ключ
-            $table->unique(['staff_id','yacht_id','start_work','finish_work','position']);
+            $table->unique(['staff_id','yacht_id','start_work','finish_work','position1']);
         });
     }
 
