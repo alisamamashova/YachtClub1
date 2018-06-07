@@ -50,15 +50,16 @@
     <div class="modal" id="modal1" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form class="form-horizontal" action="/owner" method="post">
+                <form class="form-horizontal" action="{{route('storeOwner')}}" method="POST">
+                    {{ csrf_field() }}
                     <div class="modal-header">
                         <h2>Регистрация владельца яхты</h2>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="control-label col-xs-3" for="lastName">Фамилия и Имя :</label>
+                            <label class="control-label col-xs-3" for="fullname">Фамилия и Имя :</label>
                             <div class="col-xs-9">
-                                <input type="text" class="form-control" id="lastName" placeholder="Введите ФИО">
+                                <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Введите ФИО">
                             </div>
                         </div>
                         {{--<div class="form-group">--}}
@@ -68,20 +69,19 @@
                         {{--</div>--}}
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-xs-3" for="phoneNumber">Телефон:</label>
+                        <label class="control-label col-xs-3" for="phone_number">Телефон:</label>
                         <div class="col-xs-9">
-                            <input type="tel" class="form-control" id="phoneNumber" placeholder="Введите номер телефона">
+                            <input type="tel" class="form-control" name="phone_number" id="phone_number" placeholder="Введите номер телефона">
                         </div>
                     </div>
-            </div>
-            <div class="modal-footer">
-                <div class="form-group">
-                    <div class="col-xs-offset-3 col-xs-9">
-                        <input type="submit" class="btn btn-primary" value="Добавить">
+                    <div class="modal-footer">
+                        <div class="form-group">
+                            <div class="col-xs-offset-3 col-xs-9">
+                                <input type="submit" class="btn btn-primary" value="Добавить">
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            </form>
+                </form>
         </div>
     </div>
     <script type="text/javascript">
@@ -102,8 +102,11 @@
         </div>
 </button>
 <div class="panel">
-    {{--<p> Номер яхты: {{ $yachts->yacht_id }}</p>--}}
     <p> Телефон: {{ $owner->phone_number }}</p>
+    <form action="/deleteOwner/{{$owner->id}}" method="post">
+        {{ csrf_field() }}
+        <button>удалить владельца</button>
+    </form>
 </div>
 @endforeach
 <script>

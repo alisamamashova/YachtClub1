@@ -24,7 +24,7 @@ class YachtsController extends Controller
     {
         $yacht = Yacht::find($id);
        // return $yachts;
-        return view('show', compact('yacht'));
+        return view('showyacht', compact('yacht'));
     }
     public function store(Request $request) //добавление новых яхт
     {
@@ -48,7 +48,7 @@ class YachtsController extends Controller
             'price'=>$request->('price'),
             'status'=>$request->('status'),
             'owner_id'=>$request->('owner_id')*/
-           'mark'=>$mark,
+            'mark'=>$mark,
             'model'=>$model,
             'flag'=>$flag,
             'portofregistry'=>$portofregistry,

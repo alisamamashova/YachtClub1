@@ -17,11 +17,13 @@ class OwnersController extends Controller
     {
         $fullname = $request->fullname;
         $phone_number = $request->phone_number;
+//        dump($request);
 
         Owner::create([
            'fullname'=>$fullname,
-            'phone_number'=>$phone_number
+            'phone_number'=>$phone_number,
         ]);
+        return redirect('/owner');
     }
     public function show($id)
     {
@@ -32,8 +34,9 @@ class OwnersController extends Controller
     {
 
     }
-    public function destroy()
+    public function destroy($id)
     {
-
+        Owner::destroy($id);
+        return redirect('/owner');
     }
 }

@@ -19,18 +19,26 @@ Route::get('/views/account', function () {
 
     return view('account');
 });
+
+//клиент
 Route::get('/', 'YachtsController@index');//страница со всеми яхтами
 Route::get('/yachts/{id}', 'YachtsController@show');//страница для отдельной яхте
 Route::post('/yachtsAdd','YachtsController@store')->name('storeYacht');//добавление новых яхт
-
-//админ
-Route::get('/staff', 'StaffController@index');//страница экипаж
+//АДМИН
+//экипаж
+Route::get('/staff', 'StaffController@index');//вывод списка экипажа
 Route::get('/staff/{id}', 'StaffController@show');//вывод отдельного моряка
+Route::post('/editStaff/{id}', 'StaffController@edit');
 Route::post('/staff', 'StaffController@store');//добавление экипажа
-
-Route::post('/owner', 'OwnersController@store');//добавление владельца
+Route::post('/deleteStaff/{id}','StaffController@destroy');//удаление экипажа
+//владелец
 Route::get('/owner', 'OwnersController@index');//вывод всех владельцев
 Route::get('/owner/{id}', 'OwnersController@show');//вывод отдельного владельца
-
+Route::post('/owner', 'OwnersController@store')->name('storeOwner');//добавление владельца
+Route::post('/deleteOwner/{id}','OwnersController@destroy');//удаление владельца
+//клиент
+Route::get('/client','ClientsController@index'); //список всех клиентов
+Route::get('/client/{id}','ClientsController@show');//вывод информации по каждому клиенту
+Route::post('/client', 'ClientsController@store');//подтверждение статуса клиента
 
 

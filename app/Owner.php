@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Owner extends Model
 {
     public $timestamps = false;
+    public $incrementing = false;
+    public $primaryKey = "id";
     protected $fillable = ['fullname', 'phone_number'];
     protected $table = 'owners';
 

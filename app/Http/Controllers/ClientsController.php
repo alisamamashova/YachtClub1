@@ -8,14 +8,21 @@ class ClientsController extends Controller
 {
     public function index()
     {
-        //запросы
+        $clients = Client::all();
+
+        return view('client', compact('clients'));
     }
     public function store()
     {
 
     }
-    public function show()
+    public function show($id)
     {
-        //вывод информации по контретному запросу
+        $clients=Client::find($id);
+//        $clients = DB::select('﻿Select R.client_id, count (*) as Rent_amount
+//                                    FROM rents AS R
+//                                    GROUP BY client_id
+//                                    Order by R.client_id');//запрос к бд для подсчета кол-ва договором по каждому клиенту
+    return view('/client');
     }
 }
