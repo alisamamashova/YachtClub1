@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+use App\Role;
+$role = new Role();
+?>
+        @if ($role->isAdmin()) {{-- ADMIN ONLY --}}
+        <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -169,16 +174,15 @@
             </div>
             <button>редактировать сотрудника</button>
         </form>
-        {{--<a href="/editStaff/{{$st->id}}">/a>--}}
+        <a href="/editStaff/{{$st->id}}">
         <form action="/deleteStaff/{{$st->id}}" method="post">
             {{ csrf_field() }}
             {{--<input name="_method" type="hidden" value="DELETE">--}}
             {{--<input name="_token" type="hidden" value="1hox0VLpoJF8FdtFhShunbEsIhTFCz3qAAFUap81">--}}
             <button>удалить сотрудника</button>
         </form>
-        {{--<a href="/deleteStaff/{{$st->id}}">удалить сотрудника</a>--}}
-</div>
-
+        <a href="/deleteStaff/{{$st->id}}">удалить сотрудника</a>
+    </div>
 @endforeach
 
 <script>
@@ -199,12 +203,6 @@
 </script>
     </div>
     </body>
-<div>
-    <div>
-        <div>
-            <div><p style="display: none">проект закодил артем копытько</p></div>
-        </div>
-    </div>
-</div>
 
     </html>
+@endif

@@ -22,7 +22,7 @@
             <a href="#news">News</a>
             <a href="#contact">Contact</a>
             <a href="#about">About</a>
-            @include('registration')
+            {{--@include('registration')--}}
         </div>
     </div>
     {{--картинка--}}
@@ -30,7 +30,6 @@
         <div class="hero-text">
             <h1 style="font-size:50px">Яхт клуб</h1>
             <p>Welcome!</p>
-            <button>Hire me</button>
         </div>
     </div>
 

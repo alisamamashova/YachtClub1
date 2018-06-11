@@ -4,14 +4,26 @@ namespace App\Http\Controllers;
 use App\Yacht;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Input;
 
 class YachtsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $yachts = Yacht::all();
-        //фильтр типа яхт
-        if($type = request('type'))
+        //фильтр цене
+
+        $yachts = Yacht::where(function($query) {
+            $minPrice = Input::has('minPrice') ? Input::get('minPrice') : null;
+            $maxPrice = Input::has('maxPrice') ? Input::get('maxPrice') : null;
+            dump($minPrice);//для картинки
+            if (isset($minPrice) && isset($maxPrice)) {
+                $query ->whereBetween('price', [$minPrice, $maxPrice]);
+            }
+
+        })->get();
+
+        //фильтр по типам яхт
+       if($type = request('type'))
         {
             $yachts = $yachts->where('type', '=', $type);
         }

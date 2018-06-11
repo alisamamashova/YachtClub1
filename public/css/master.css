@@ -17,7 +17,7 @@ body, html {
 }
 /*стили для картинки под навигацией*/
 .hero-image {
-    background-image: url("/images/yachtbackground.png");
+    background-image: url(../images/yachtbackground.png);
     height: 50%;
     background-position: center;
     background-repeat: no-repeat;

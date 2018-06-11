@@ -31,7 +31,7 @@
                         <a class="nav-link" href="/client">Клиенты</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/rent">Аренда</a>
+                        <a class="nav-link" href="/rents">Аренда</a>
                     </li>
                 </ul>
             </nav>

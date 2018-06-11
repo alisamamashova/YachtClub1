@@ -40,5 +40,12 @@ Route::post('/deleteOwner/{id}','OwnersController@destroy');//удаление �
 Route::get('/client','ClientsController@index'); //список всех клиентов
 Route::get('/client/{id}','ClientsController@show');//вывод информации по каждому клиенту
 Route::post('/client', 'ClientsController@store');//подтверждение статуса клиента
+//аренда
+Route::get('/rents','RentsController@index');
+Route::get('/rents/{id}','RentsController@show');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

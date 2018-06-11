@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <link rel="stylesheet" href="/css/yacht.css">
+    <link rel="stylesheet" href="/css/app.css">
     {{--каталог яхт и окошко фильтров--}}
     <div class="my-flex-block">
         <div class="my-flex-container2">
@@ -10,7 +10,7 @@
 
                 {{--@foreach($yachts as $yacht)--}}
                     <div class="yacht">
-                        <img src="/images/logo.png" alt="">
+                        <img src="../images/yacht2.png.png" alt="">
                         <p>{{ $yacht->id }}</p>
                         <p>{{ $yacht->model }}
                             {{ $yacht->mark }}

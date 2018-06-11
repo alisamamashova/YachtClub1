@@ -11,7 +11,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/css/masterAdmin.css">
-    <link rel="stylesheet" href="/css/app.css">
 
     <div class="container">
         <div class="jumbotron">
@@ -41,24 +40,34 @@
 </head>
 <body>
 <div class="container">
-    <h2>Клиенты клуба</h2>
+    <h2>Договора об аренде яхт
+
+        <div class="modal" id="modal1" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                </div>
+            </div>
+            <script type="text/javascript">
+                function revealRegister() {
+                    var modal = document.getElementById('modal1');
+                    modal.style.display = "block";
+                }
+            </script>
+    </h2>
 </div>
 <div class="container">
-    @foreach($clients as $client)
+    @foreach($rents as $rent)
         <button class="accordion">
-            <div class="client">
-                <p> {{ $client->id }} .
-                    {{ $client->fullname }}
-                </p>
+            <div class="owner">
+                <p>Договор номер: {{ $rent->rent_id }} </p>
             </div>
         </button>
         <div class="panel">
-            <p>Номер паспорта: {{ $client->passport }}</p>
-            <p>Телефон: {{ $client->phone_number }}</p>
-            {{--<p>Количество контрактов: {{$client->Rent_amount}}</p>--}}
-            <form action="/deleteClient/{{$client->id}}" method="post">
+            <p> Дата аренды: от {{ $rent->rent_start }} до {{$rent->rent_finish}}</p>
+            <p>Номер яхты: {{$rent->yacht_id}}</p>
+            <form action="/deleteRent/{{$rent->id}}" method="post">
                 {{ csrf_field() }}
-                <button>удалить клиента</button>
+                <button>удалить договор</button>
             </form>
         </div>
     @endforeach
