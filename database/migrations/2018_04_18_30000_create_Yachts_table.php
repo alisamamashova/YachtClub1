@@ -28,6 +28,7 @@ class CreateYachtsTable extends Migration
             $table->integer('owner_id')->unsigned();
             $table->foreign('owner_id')->references('id')->on('owners');
             $table->unique(['id','owner_id']); //составной ключ
+            $table->text('image');
         });
     }
 

@@ -16,11 +16,11 @@ class ClientsController extends Controller
     }
     public function store(Request $request, $client_id)
     {
-        $this->validate(request()[
-        'fullname'=>'required|min:2',
-        'passport'=>'required|min:6',
-        'phone_number'=>'required'
-            ]);
+//        $this->validate(request()[
+//        'fullname'=>'required|min:2',
+//        'passport'=>'required|min:6',
+//        'phone_number'=>'required'
+//            ]);
         $fullname = $request->fullname;
         $passport = $request->passport;
         $phone_number = $request->phone_number;
