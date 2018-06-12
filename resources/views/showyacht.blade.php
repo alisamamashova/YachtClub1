@@ -28,6 +28,11 @@
                         </p>
                         <a href=""></a>
                     </div>
+                {{--создание договора при заказе яхты--}}
+                <form action="/storeRent/{{$rent->id}}" method="post">
+                    {{ csrf_field() }}
+                    <button>удалить владельца</button>
+                </form>
                 {{--@endforeach--}}
             </div>
         </div>

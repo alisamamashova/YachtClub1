@@ -19,6 +19,11 @@ class StaffController extends Controller
     }
     public function store(Request $request) //добавление новых моряков
     {
+        $this->validate(request(),[
+            'fullname'=>'required|min:2',
+            'passport'=>'required|min:6',
+            'salary'=>'required|max:5'
+        ]);
         $fullname = $request->fullname;
         $sex = $request->sex;
         $passport = $request->passport;

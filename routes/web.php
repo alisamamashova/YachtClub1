@@ -48,4 +48,4 @@ Route::get('/rents/{id}','RentsController@show');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/staff', 'StaffController@index')->name('staff');

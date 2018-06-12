@@ -15,6 +15,10 @@ class OwnersController extends Controller
     }
     public function store(Request $request) //добавление новых владельцев
     {
+        $this->validate(request(),[
+            'fullname'=>'required|min:2',
+            'phone_number'=>'required|min:10'
+        ]);
         $fullname = $request->fullname;
         $phone_number = $request->phone_number;
 //        dump($request);

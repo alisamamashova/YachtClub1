@@ -40,6 +40,13 @@ class YachtsController extends Controller
     }
     public function store(Request $request) //добавление новых яхт
     {
+        $this->validate(request(), [
+            'mark'=>'required',
+            'model'=>'required',
+            'flag'=>'required',
+            'portofregistry'=>'required', 'type'=>'required', 'displacement'=>'required',
+            'price'=>'required|max:4'
+        ]);
         $mark=$request->mark;
         $model=$request->model;
         $flag=$request->flag;

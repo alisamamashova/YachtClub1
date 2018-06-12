@@ -1,8 +1,8 @@
-<?php
-use App\Role;
-$role = new Role();
-?>
-        @if ($role->isAdmin()) {{-- ADMIN ONLY --}}
+{{--<?php--}}
+{{--use App\Role;--}}
+{{--$role = new Role();--}}
+{{--?>--}}
+        {{--@if ($role->isAdmin()) --}}{{-- ADMIN ONLY --}}
         <!DOCTYPE html>
 <html>
 <head>
@@ -122,7 +122,9 @@ $role = new Role();
                         </div>
                     </div>
                 </div>
+                        </div>
                 </form>
+
             </div>
         </div>
         </div>
@@ -182,7 +184,8 @@ $role = new Role();
             <button>удалить сотрудника</button>
         </form>
         <a href="/deleteStaff/{{$st->id}}">удалить сотрудника</a>
-    </div>
+
+</div>
 @endforeach
 
 <script>
@@ -205,4 +208,4 @@ $role = new Role();
     </body>
 
     </html>
-@endif
+{{--@endif--}}
