@@ -42,10 +42,20 @@ Route::get('/client/{id}','ClientsController@show');//вывод информа�
 Route::post('/client', 'ClientsController@store');//подтверждение статуса клиента
 //аренда
 Route::get('/rents','RentsController@index');
+Route::post('/rents','RentsController@store');
 Route::get('/rents/{id}','RentsController@show');
 
+Route::get('/ownerPage', 'OwnersController@myPage');
+
+Route::get('/register','RegisterController@index');
+Route::post('/register', 'RegisterController@store');
+
+Route::get('/login','LoginController@index');
+Route::get('/logout', 'LoginController@destroy')->name('logout');;
+Route::post('/login', 'LoginController@store');
 
 
-Auth::routes();
+
+//Auth::routes();
 
 Route::get('/staff', 'StaffController@index')->name('staff');

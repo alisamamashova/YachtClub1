@@ -27,10 +27,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function staff()
+    public function owners()
     {
-        return $this->hasOne(Staff::class, 'id');
+        return $this->hasOne(Owner::class, 'id');
     }
+
 
     public function role()
     {

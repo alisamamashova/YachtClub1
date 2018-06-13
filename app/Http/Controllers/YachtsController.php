@@ -15,7 +15,7 @@ class YachtsController extends Controller
         $yachts = Yacht::where(function($query) {
             $minPrice = Input::has('minPrice') ? Input::get('minPrice') : null;
             $maxPrice = Input::has('maxPrice') ? Input::get('maxPrice') : null;
-            dump($minPrice);//для картинки
+//            dump($minPrice);//для картинки
             if (isset($minPrice) && isset($maxPrice)) {
                 $query ->whereBetween('price', [$minPrice, $maxPrice]);
             }

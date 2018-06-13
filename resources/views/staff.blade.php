@@ -1,8 +1,4 @@
-{{--<?php--}}
-{{--use App\Role;--}}
-{{--$role = new Role();--}}
-{{--?>--}}
-        {{--@if ($role->isAdmin()) --}}{{-- ADMIN ONLY --}}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +11,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 
     <div class="container">
         <div class="jumbotron">
@@ -37,13 +32,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/rents">Аренда</a>
                     </li>
+                    <li>
+                        <p style="color: white;">{{Auth::user()->email}}</p>
+                    </li>
                     <li class="nav-item">
-                        <a href="{{ route('logout') }}"
+                        <a href="/logout"
                            onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                             Logout
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        <form id="logout-form" action="{{ route('logout') }}" method="GET" style="display: none;">
                             {{ csrf_field() }}
                         </form>
                     </li>
@@ -52,6 +50,9 @@
         </div>
     </div>
 </head>
+@if(Session::has('message'))
+    <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+@endif
 <body>
 <div class="container">
     <h2>Список Экипажа
@@ -186,16 +187,17 @@
             </div>
             <button>редактировать сотрудника</button>
         </form>
-        <a href="/editStaff/{{$st->id}}">
+        {{--<a href="/editStaff/{{$st->id}}">--}}
         <form action="/deleteStaff/{{$st->id}}" method="post">
             {{ csrf_field() }}
             {{--<input name="_method" type="hidden" value="DELETE">--}}
             {{--<input name="_token" type="hidden" value="1hox0VLpoJF8FdtFhShunbEsIhTFCz3qAAFUap81">--}}
             <button>удалить сотрудника</button>
         </form>
-        <a href="/deleteStaff/{{$st->id}}">удалить сотрудника</a>
+        {{--<a href="/deleteStaff/{{$st->id}}">удалить сотрудника</a>--}}
 
 </div>
+
 @endforeach
 
 <script>

@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 use App\Client;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ClientsController extends Controller
 {
+//    public function __construct()
+//    {
+//        $this->middleware('auth');
+//    }
     public function index()
     {
         $clients = Client::all();
         $clients_name = DB::select('select distinct fullname from rent_client()'); //Вывод фио из процедуры
-        $clients = DB::select('select * from staff_yacht()'); //Запрос в хранимую процедуру staff_yacht вывод всего
+        $clients = DB::select('select * from rent_client()'); //Запрос в хранимую процедуру staff_yacht вывод всего
 
         return view('client', compact('clients', 'clients_name'));
     }
@@ -39,6 +44,7 @@ class ClientsController extends Controller
             'rent_finish'=>$rent_finish,
             'paymentmethod'=>$paymentmethod
         ]);
+        return redirect('/showyacht');
 
     }
     public function show($id)

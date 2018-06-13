@@ -33,11 +33,27 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/rents">Аренда</a>
                     </li>
+                    <li>
+                        <p style="color: white;">{{Auth::user()->email}}</p>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/logout"
+                           onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="GET" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
                 </ul>
             </nav>
         </div>
     </div>
 </head>
+@if(Session::has('message'))
+    <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+@endif
     <body>
     <div class="container">
 <h2>Владельцы яхт

@@ -25,8 +25,11 @@
             {{--@include('registration')--}}
         </div>
     </div>
+    @if(Session::has('message'))
+        <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+    @endif
     {{--картинка--}}
-    <div class="hero-image">
+    <div class="hero-image" style="height: 500px;">
         <div class="hero-text">
             <h1 style="font-size:50px">Яхт клуб</h1>
             <p>Welcome!</p>

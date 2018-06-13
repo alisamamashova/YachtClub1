@@ -9,7 +9,7 @@ class Yacht extends Model
     protected $table = 'yachts';
     public $timestamps = 'false';
     public $fillable = ['model', 'mark', 'flag', 'portofregistry',
-                        'type', 'displacement', 'price', 'status', ];
+                        'type', 'displacement', 'price', 'status', 'images'];
 
 //    public function scopeFilter($query, $filters)
 //    {

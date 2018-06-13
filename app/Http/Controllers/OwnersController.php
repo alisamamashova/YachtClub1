@@ -7,11 +7,15 @@ use Illuminate\Http\Request;
 
 class OwnersController extends Controller
 {
+//    public function __construct()
+//    {
+//        $this->middleware('auth');
+//    }
     public function index()
     {
         $owners = Owner::all();
         //$yachts = Yacht::find($id);
-        return view('owner', compact('owners', 'yachts'));
+        return view('owner', compact('owners'));
     }
     public function store(Request $request) //добавление новых владельцев
     {
@@ -27,6 +31,8 @@ class OwnersController extends Controller
            'fullname'=>$fullname,
             'phone_number'=>$phone_number,
         ]);
+        session()->flash('message','Владелец успешно добавлен');
+
         return redirect('/owner');
     }
     public function show($id)
@@ -37,6 +43,11 @@ class OwnersController extends Controller
     public function edit()
     {
 
+    }
+    public function myPage()
+    {
+//        $myYachts = Yacht::where('owner_id', '=',)
+        return view('ownerPage');
     }
     public function destroy($id)
     {

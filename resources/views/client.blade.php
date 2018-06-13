@@ -12,7 +12,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/css/masterAdmin.css">
     <link rel="stylesheet" href="/css/app.css">
-
+    @if(Session::has('message'))
+        <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+    @endif
     <div class="container">
         <div class="jumbotron">
             <h1>Яхт Клуб</h1>
@@ -33,6 +35,19 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/rents">Аренда</a>
+                    </li>
+                    <li>
+                        <p style="color: white;">{{Auth::user()->email}}</p>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/logout"
+                           onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="GET" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                     </li>
                 </ul>
             </nav>

@@ -30,11 +30,20 @@
                    </li>
                </ul>
            </div>
-
-           <div class="container">
+           @if(Session::has('message'))
+               <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+           @endif
+           <div class="container" style="    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;">
 
                @foreach($yachts as $yacht)
-                   <img src="../images/yacht2.png" alt="Avatar" class="image">
+                   <div>
+
+
+                   <img src="{{$yacht->images}}" alt="Avatar" class="image" style="max-width: 500px;">
                    <h2><p>{{ $yacht->id }}</p>
                        <a href="/yachts/{{ $yacht->id }}">
                        {{ $yacht->model }}
@@ -49,7 +58,7 @@
                        @else
                        <span>Недоступно</span>
                        @endif
-
+                   </div>
                    @endforeach
    </div>
    {{--<div class="container">--}}
