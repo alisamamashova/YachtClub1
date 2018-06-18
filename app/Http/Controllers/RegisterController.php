@@ -51,7 +51,7 @@ class RegisterController extends Controller
         DB::connection('pgsqlAuth')
             ->select("INSERT INTO users(email, password, role)
 			VALUES 
-			('$email','$pwdHash','Владелец')");
+			('$email','$pwdHash','owner')");
 
         $owner =Owner::create([
             'id' => User::all()->last()->id,
@@ -61,7 +61,7 @@ class RegisterController extends Controller
 
 //        dd($owner);
 
-        return redirect('/dashboard');
+        return redirect('/ownerPage');
     }
 
 

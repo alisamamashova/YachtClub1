@@ -23,7 +23,9 @@ Route::get('/views/account', function () {
 //клиент
 Route::get('/', 'YachtsController@index');//страница со всеми яхтами
 Route::get('/yachts/{id}', 'YachtsController@show');//страница для отдельной яхте
-Route::post('/yachtsAdd','YachtsController@store')->name('storeYacht');//добавление новых яхт
+Route::get('/yachtAdmin', 'YachtsController@addYacht');
+Route::post('/yachtsAdmin','YachtsController@store')->name('storeYacht');//добавление новых яхт
+Route::post('/yachtAdmin', 'YachtsController@destroy');//удаление яхты
 //АДМИН
 //экипаж
 Route::get('/staff', 'StaffController@index');//вывод списка экипажа
@@ -44,8 +46,9 @@ Route::post('/client', 'ClientsController@store');//подтверждение �
 Route::get('/rents','RentsController@index');
 Route::post('/rents','RentsController@store');
 Route::get('/rents/{id}','RentsController@show');
-
+//личный кабинет владельца
 Route::get('/ownerPage', 'OwnersController@myPage');
+Route::post('/ownerPage', 'OwnersController@addYacht');
 
 Route::get('/register','RegisterController@index');
 Route::post('/register', 'RegisterController@store');

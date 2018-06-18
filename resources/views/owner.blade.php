@@ -19,7 +19,7 @@
                 <!-- Links -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Яхты</a>
+                        <a class="nav-link" href="/yachtAdmin">Яхты</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/owner">Владельцы</a>

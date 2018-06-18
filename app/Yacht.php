@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Yacht extends Model
 {
     protected $table = 'yachts';
-    public $timestamps = 'false';
+    public $timestamps = false;
     public $fillable = ['model', 'mark', 'flag', 'portofregistry',
-                        'type', 'displacement', 'price', 'status', 'images'];
+                        'type', 'displacement', 'price', 'status', 'images','owner_id'];
+    public $guarded = ['created_at','updated_at'];
 
 //    public function scopeFilter($query, $filters)
 //    {

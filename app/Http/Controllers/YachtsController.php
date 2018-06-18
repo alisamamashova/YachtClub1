@@ -31,7 +31,11 @@ class YachtsController extends Controller
         $types = DB::select('select distinct type from yachts');
         return view('yacht', compact('yachts','types'));
     }
-
+    public function addYacht()
+    { //вывод для адммина
+        $yachts = Yacht::all();
+        return view('yachtAdmin', compact('yachts'));
+    }
     public function show($id)
     {
         $yacht = Yacht::find($id);
@@ -77,13 +81,15 @@ class YachtsController extends Controller
             'status'=>$status,
             'owner_id'=>$owner_id
         ]);
+        return redirect('yachtAdmin');
     }
     public function edit()
-    {
+{//добавление яхта администратором
 
-    }
-    public function destroy()
+}
+    public function destroy($id)
     {
-
+        Yacht::destroy($id);
+        return redirect('/yachtAdmin');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Owner;
 use App\Yacht;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class OwnersController extends Controller
@@ -44,10 +45,46 @@ class OwnersController extends Controller
     {
 
     }
+    public function addYacht(Request $request) {
+        $this->validate(request(), [
+            'mark'=>'required',
+            'model'=>'required',
+            'flag'=>'required',
+            'portofregistry'=>'required', 'type'=>'required', 'displacement'=>'required',
+            'price'=>'required|max:4'
+        ]);
+        $mark=$request->mark;
+        $model=$request->model;
+        $flag=$request->flag;
+        $portofregistry=$request->portofregistry;
+        $type=$request->type;
+        $displacement=$request->displacement;
+        $price=$request->price;
+        $status=$request->status;
+        $owner_id=$request->owner_id;
+
+//        dd($owner_id);
+
+        $yacht = Yacht::create([
+            'mark'=>$mark,
+            'model'=>$model,
+            'flag'=>$flag,
+            'portofregistry'=>$portofregistry,
+            'type'=>$type,
+            'displacement'=>$displacement,
+            'price'=>$price,
+            'status'=>$status,
+            'owner_id'=>$owner_id
+        ]);
+
+//        dd($yacht);
+        return redirect('ownerPage');
+    }
     public function myPage()
     {
-//        $myYachts = Yacht::where('owner_id', '=',)
-        return view('ownerPage');
+//        dd(Auth::user()->id);
+        $yachts = Yacht::where('owner_id', '=',   Auth::user()->id)->get();
+        return view('ownerPage', compact('yachts'));
     }
     public function destroy($id)
     {
